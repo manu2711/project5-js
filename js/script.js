@@ -9,6 +9,7 @@ request.onreadystatechange = function () {
 
             // Creation et ajout  d'une div article pour créer un nouveau produit
             const newItem = document.createElement("article");
+            newItem.classList.add("item");
             const productList = document.getElementById('product-list');
             productList.appendChild(newItem);
 
@@ -16,28 +17,31 @@ request.onreadystatechange = function () {
             const itemImage = document.createElement("img");
             itemImage.setAttribute("src", item.imageUrl);
 
-            // Création d'une div pour ajouter la nom du produit, puis ajout de la class item-name
+            // Création d'une div pour ajouter le NOM du produit, puis ajout de la class item-name
             const itemName = document.createElement("div");
-            itemName.classList.add("item-name");
-
-            // Création d'une div pour ajouter la description du produit, puis ajout de la class item-description
-            const itemDescription = document.createElement("div");
-            itemDescription.classList.add("item-description");
-
-            // Création d'une div pour ajouter le prix du produit, puis ajout de la class item-price
-            const itemPrice = document.createElement("div");
-            itemPrice.classList.add("item-price");
-
-            // Création d'un bouton renvoyant à la page produit.html et correspondant au produit cliqué
-
-            // Ajout des div name, description et price a l'élément article parent
-            newItem.append(itemImage, itemName, itemDescription, itemPrice);
-
-            // Récupération des éléments disponible dans l'objet renvoyé par le serveur
+            itemName.classList.add("item__name");
             itemName.innerHTML = item.name;
+
+            // Création d'une div pour ajouter la DESCRIPTION du produit, puis ajout de la class item-description
+            const itemDescription = document.createElement("div");
+            itemDescription.classList.add("item__description");
             itemDescription.innerHTML = item.description;
+
+            // Création d'une div pour ajouter le PRIX du produit, puis ajout de la class item-price
+            const itemPrice = document.createElement("div");
+            itemPrice.classList.add("item__price");
             itemPrice.innerHTML = item.price / 100 + '.00 EUR';
 
+            // Création d'un BOUTON renvoyant à la page produit.html et correspondant au produit cliqué
+            const itemURL = "produit.html?id="+item._id;
+            console.log(item._id);
+            const itemLien = document.createElement("a");
+            itemLien.classList.add("item__lien");
+            itemLien.setAttribute("href", itemURL);
+            itemLien.innerText = "Voir le produit";
+
+            // Ajout des div name, description et price a l'élément article parent
+            newItem.append(itemImage, itemName, itemDescription, itemPrice, itemLien);
         }
     }
 };
