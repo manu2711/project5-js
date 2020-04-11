@@ -7,41 +7,44 @@ request.onreadystatechange = function () {
         let response = JSON.parse(this.responseText);
         for (let item of response) {
 
-            // Creation et ajout  d'une div article pour créer un nouveau produit
-            const newItem = document.createElement("article");
-            newItem.classList.add("item");
-            const productList = document.getElementById('product-list');
-            productList.appendChild(newItem);
+            // On récupère le numéro de l'ID dans l'URL
+            let str = window.location.href;
+            let url = new URL(str);
+            let search_id = new URLSearchParams(url.search);
 
-            // Création et ajout de la balie img pour ajouter la photo du produit
-            const itemImage = document.createElement("img");
-            itemImage.setAttribute("src", item.imageUrl);
+            // On créé les constante qui vont permettre d'afficher le produit sélectionné dans la page produit.html
+            const itemImage = document.getElementById("item-image");
+            const itemName = document.getElementById("item-name");
+            const itemDescription = document.getElementById("item-description");
+            const itemPrice = document.getElementById("item-price");
+            const options = item.varnish;
 
-            // Création d'une div pour ajouter le NOM du produit, puis ajout de la class item-name
-            const itemName = document.createElement("div");
-            itemName.classList.add("item__name");
-            itemName.innerHTML = item.name;
+            const noProduct = document.getElementById("no-product");
 
-            // Création d'une div pour ajouter la DESCRIPTION du produit, puis ajout de la class item-description
-            const itemDescription = document.createElement("div");
-            itemDescription.classList.add("item__description");
-            itemDescription.innerHTML = item.description;
+            if (search_id.has("id")) {
+                let id = search_id.get("id");
 
-            // Création d'une div pour ajouter le PRIX du produit, puis ajout de la class item-price
-            const itemPrice = document.createElement("div");
-            itemPrice.classList.add("item__price");
-            itemPrice.innerHTML = item.price / 100 + '.00 EUR';
+                // On vérifie si un article correspond à l'ID de l'URL, si oui on l'affiche, sinon on affiche "Product not found"
 
-            // Création d'un BOUTON renvoyant à la page produit.html et correspondant au produit cliqué
-            const itemURL = "produit.html?id="+item._id;
-            console.log(item._id);
-            const itemLien = document.createElement("a");
-            itemLien.classList.add("item__lien");
-            itemLien.setAttribute("href", itemURL);
-            itemLien.innerText = "Voir le produit";
+                if (id == item._id) {
+                    itemImage.setAttribute("src", item.imageUrl);
+                    itemName.innerHTML = item.name;
+                    itemDescription.innerHTML = item.description;
+                    itemPrice.innerHTML = item.price / 100 + '.00 EUR';
 
-            // Ajout des div name, description et price a l'élément article parent
-            newItem.append(itemImage, itemName, itemDescription, itemPrice, itemLien);
+                    for (let option of options) {
+                        const itemOption = document.getElementById("item-option");
+                        const addOption = document.createElement("option");
+                        addOption.innerHTML = option;
+                        itemOption.appendChild(addOption);
+                        console.log(option);
+                    }
+
+                } else {
+                    // document.getElementById("product").style.display = "none";
+                    //  noProduct.style.display = "block";
+                }
+            }
         }
     }
 };

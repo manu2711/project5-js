@@ -18,7 +18,7 @@ request.onreadystatechange = function () {
             itemImage.setAttribute("src", item.imageUrl);
 
             // Création d'une div pour ajouter le NOM du produit, puis ajout de la class item-name
-            const itemName = document.createElement("div");
+            const itemName = document.createElement("h2");
             itemName.classList.add("item__name");
             itemName.innerHTML = item.name;
 
@@ -34,7 +34,7 @@ request.onreadystatechange = function () {
 
             // Création d'un BOUTON renvoyant à la page produit.html et correspondant au produit cliqué
             const itemURL = "produit.html?id="+item._id;
-            console.log(item._id);
+            
             const itemLien = document.createElement("a");
             itemLien.classList.add("item__lien");
             itemLien.setAttribute("href", itemURL);

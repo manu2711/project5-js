@@ -18,30 +18,39 @@
 <body>
 	<div class="container">
 		<header>
-			<h1>OrinoMeuble</h1>			
+			<h1>OrinoMeuble</h1>
 		</header>
 
 		<!-- Menu de la page -->
 		<nav>
-			<a href="index.html">Home</a> | Produits
+			<a href="index.html">Home</a>
 		</nav>
 		<!-- Menu de la page END -->
 		<main>
 			<section class="product" id="product">
-
-				<!--
 				<article class="item">
-					<img src="" class="item-image" id="item-image"></div>
-					<div class="item-name" id="item-name"></div>
-					<div class="item-price" id="item-price"></div>
-					<div class="item-description" id="item-description"></div>
+					<img class="item__image" id="item-image">
+					<main class="item__details">
+						<h2 class="item__name" id="item-name"></h2>
+						Description
+						<div class="item__description" id="item-description"></div>
+						Price
+						<div class="item__price" id="item-price"></div>
+						Options
+						
+						<select name="option" id="item-option">
+							<!-- Les options sont rajoutés par product.js-->
+						</select>
+						<a href="#" class="item__lien">Acheter</a>
+					</main>
 				</article>
-			-->
-			
-			
+			</section>
+			<section class="no-product" id="no-product">
+				<!-- Message qui affiche "Produit non disponible si l'ID du produit n'est pas valable"-->
+				Désolé, ce produit n'est pas disponible
 			</section>
 		</main>
-		
+
 		<!-- Footer -->
 		<footer>
 			<section>
