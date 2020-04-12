@@ -30,7 +30,7 @@ request.onreadystatechange = function () {
             // Création d'une div pour ajouter le PRIX du produit, puis ajout de la class item-price
             const itemPrice = document.createElement("div");
             itemPrice.classList.add("item__price");
-            itemPrice.innerHTML = item.price / 100 + '.00 EUR';
+            itemPrice.innerHTML = "EUR " + (item.price/100).toFixed(2);
 
             // Création d'un BOUTON renvoyant à la page produit.html et correspondant au produit cliqué
             const itemURL = "produit.html?id="+item._id;

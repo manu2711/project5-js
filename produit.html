@@ -23,7 +23,10 @@
 
 		<!-- Menu de la page -->
 		<nav>
-			<a href="index.html">Home</a>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">Panier</a></li>
+			</ul>
 		</nav>
 		<!-- Menu de la page END -->
 		<main>
@@ -32,16 +35,16 @@
 					<img class="item__image" id="item-image">
 					<main class="item__details">
 						<h2 class="item__name" id="item-name"></h2>
-						Description
+						<h3>Description</h3>
 						<div class="item__description" id="item-description"></div>
-						Price
+						<h3>Price</h3>
 						<div class="item__price" id="item-price"></div>
-						Options
-						
+						<h3>Options</h3>
+
 						<select name="option" id="item-option">
 							<!-- Les options sont rajoutés par product.js-->
 						</select>
-						<a href="#" class="item__lien">Acheter</a>
+						<a href="#" class="item__button" id="item-button">Acheter</a>
 					</main>
 				</article>
 			</section>
