@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Orimeuble</title>
+	<meta name="description" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+	<link rel="shortcut icon" type="image/png" href="">
+
+	<meta name="robot" content="index,follow">
+
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>OrinoMeuble</h1>
+		</header>
+
+		<!-- Menu de la page -->
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="#">Panier</a></li>
+			</ul>
+		</nav>
+		<!-- Menu de la page END -->
+		<main>
+			<section class="product" id="product">
+				<article class="item">
+					<img class="item__image" id="item-image">
+					<main class="item__details">
+						<h2 class="item__name" id="item-name"></h2>
+						<h3>Description</h3>
+						<div class="item__description" id="item-description"></div>
+						<h3>Price</h3>
+						<div class="item__price" id="item-price"></div>
+						<h3>Options</h3>
+
+						<select name="option" id="item-option">
+							<!-- Les options sont rajoutés par product.js-->
+						</select>
+						<a href="#" class="item__button" id="item-button">Acheter</a>
+					</main>
+				</article>
+			</section>
+			<section class="no-product" id="no-product">
+				<!-- Message qui affiche "Produit non disponible si l'ID du produit n'est pas valable"-->
+				Désolé, ce produit n'est pas disponible
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer>
+			<section>
+				Contact us
+			</section>
+			<section>
+				Footer
+			</section>
+			<section>
+				Facebook
+				Instagram
+				Twitter
+			</section>
+		</footer>
+		<!-- Footer END -->
+
+	</div>
+
+	<!-- JavaScript-->
+	<script src="./js/product.js"></script>
+	<!-- JavaScript END-->
+</body>
+
+</html>
