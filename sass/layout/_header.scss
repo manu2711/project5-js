@@ -1,0 +1,15 @@
+header {
+    min-height: 14rem;
+    background: url("../../assets/images/banner-image.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: white;
+        font-size: 3rem;
+    }
+}

@@ -4,16 +4,16 @@
 README.md
 
 #folders
-sass/
-controllers/
-images/
-routes/
-models/
+#sass/
+#controllers/
+#images/
+#routes/
+#models/
 
 #JavaScript
-server.js
-app.js
+#server.js
+#app.js
 
 #JSON
-package.json
-package-lock.json
+#package.json
+#package-lock.json
