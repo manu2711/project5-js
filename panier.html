@@ -25,33 +25,35 @@
 		<nav>
 			<ul>
 				<li><a href="index.html">Home</a></li>
-				<li><a href="#">Panier</a></li>
+				<li><a href="panier.html">Mon Panier</a></li>
 			</ul>
 		</nav>
 		<!-- Menu de la page END -->
-		<main>
-			<section class="product" id="product">
-				<article class="item">
-					<img class="item__image" id="item-image">
-					<main class="item__details">
-						<h2 class="item__name" id="item-name"></h2>
-						<h3>Description</h3>
-						<div class="item__description" id="item-description"></div>
-						<h3>Price</h3>
-						<div class="item__price" id="item-price"></div>
-						<h3>Options</h3>
+		<main class="basket">
+			<div class="basket__items" id="basket__items">
+				<table class="item-table">
+					<thead>
+						<tr>
+							<td>Produit</td>
+							<td>Prix</td>
+						</tr>
+					</thead>
+					<tbody class="table-row" id="table-row">
+						<!-- Insertion de la liste des produits dans le panier grace a basket.js-->
+					</tbody>
 
-						<select name="option" id="item-option">
-							<!-- Les options sont rajoutés par product.js-->
-						</select>
-						<a href="#" class="item__button" id="item-button">Acheter</a>
-					</main>
-				</article>
-			</section>
-			<section class="no-product" id="no-product">
-				<!-- Message qui affiche "Produit non disponible si l'ID du produit n'est pas valable"-->
-				Désolé, ce produit n'est pas disponible
-			</section>
+				</table>
+			</div>
+			<div class="basket__form" id="basket__form">
+				<form action="#">
+					<input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+					<input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+					<textarea name="adresse" id="adresse" rows="5" placeholder="Votre adresse" required></textarea>
+					<input type="text" id="ville" placeholder="Votre ville" required>
+					<input type="email" id="email" placeholder="Votre email" required>
+					<button type="submit">Commander</button>
+				</form>
+			</div>
 		</main>
 
 		<!-- Footer -->
@@ -73,7 +75,7 @@
 	</div>
 
 	<!-- JavaScript-->
-	<script src="./js/product.js"></script>
+	<script src="./js/basket.js"></script>
 	<!-- JavaScript END-->
 </body>
 
