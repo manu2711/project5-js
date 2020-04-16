@@ -1,82 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Orimeuble</title>
+    <meta name="description" content="" />
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Orimeuble</title>
-	<meta name="description" content="">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="shortcut icon" type="image/png" href="" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-	<link rel="shortcut icon" type="image/png" href="">
+    <meta name="robot" content="index,follow" />
 
-	<meta name="robot" content="index,follow">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+  </head>
 
-	<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <body>
+    <div class="container">
+      <header>
+        <h1>OrinoMeuble</h1>
+      </header>
 
-</head>
+      <!-- Menu de la page -->
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="panier.html">Mon Panier</a></li>
+        </ul>
+      </nav>
+      <!-- Menu de la page END -->
+      <main class="basket">
+        <div class="basket__items" id="basket__items">
+          <table class="item-table">
+            <thead>
+              <tr>
+                <td>Produit</td>
+                <td>Prix</td>
+              </tr>
+            </thead>
+            <tbody class="table-row" id="table-row">
+              <!-- Insertion de la liste des produits dans le panier grace a basket.js-->
+            </tbody>
+          </table>
+        </div>
+        <div class="basket__form" id="basket__form">
+          <form action="#">
+            <input
+              type="text"
+              id="prenom"
+              name="prenom"
+              placeholder="Votre prénom"
+              required
+            />
+            <input
+              type="text"
+              id="nom"
+              name="nom"
+              placeholder="Votre nom"
+              required
+            />
+            <textarea
+              name="adresse"
+              id="adresse"
+              rows="5"
+              placeholder="Votre adresse"
+              required
+            ></textarea>
+            <input type="text" id="ville" placeholder="Votre ville" required />
+            <input type="email" id="email" placeholder="Votre email" required />
+            <button type="submit">Commander</button>
+          </form>
+        </div>
+      </main>
 
-<body>
-	<div class="container">
-		<header>
-			<h1>OrinoMeuble</h1>
-		</header>
+      <!-- Footer -->
+      <footer>
+        <section>
+          Contact us
+        </section>
+        <section>
+          Footer
+        </section>
+        <section>
+          Facebook Instagram Twitter
+        </section>
+      </footer>
+      <!-- Footer END -->
+    </div>
 
-		<!-- Menu de la page -->
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="panier.html">Mon Panier</a></li>
-			</ul>
-		</nav>
-		<!-- Menu de la page END -->
-		<main class="basket">
-			<div class="basket__items" id="basket__items">
-				<table class="item-table">
-					<thead>
-						<tr>
-							<td>Produit</td>
-							<td>Prix</td>
-						</tr>
-					</thead>
-					<tbody class="table-row" id="table-row">
-						<!-- Insertion de la liste des produits dans le panier grace a basket.js-->
-					</tbody>
-
-				</table>
-			</div>
-			<div class="basket__form" id="basket__form">
-				<form action="#">
-					<input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
-					<input type="text" id="nom" name="nom" placeholder="Votre nom" required>
-					<textarea name="adresse" id="adresse" rows="5" placeholder="Votre adresse" required></textarea>
-					<input type="text" id="ville" placeholder="Votre ville" required>
-					<input type="email" id="email" placeholder="Votre email" required>
-					<button type="submit">Commander</button>
-				</form>
-			</div>
-		</main>
-
-		<!-- Footer -->
-		<footer>
-			<section>
-				Contact us
-			</section>
-			<section>
-				Footer
-			</section>
-			<section>
-				Facebook
-				Instagram
-				Twitter
-			</section>
-		</footer>
-		<!-- Footer END -->
-
-	</div>
-
-	<!-- JavaScript-->
-	<script src="./js/basket.js"></script>
-	<!-- JavaScript END-->
-</body>
-
+    <!-- JavaScript-->
+    <script src="./js/basket.js"></script>
+    <!-- JavaScript END-->
+  </body>
 </html>
