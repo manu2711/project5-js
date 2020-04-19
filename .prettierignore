@@ -1,2 +1,3 @@
 sass
-asstets/css
+*.css
+*.html
