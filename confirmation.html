@@ -26,12 +26,13 @@
 			<ul>
 				<li><a href="index.html">Home</a></li>
 				<li><a href="panier.html">Mon Panier</a></li>
-			  </ul>
+			</ul>
 		</nav>
 		<!-- Menu de la page END -->
 		<main>
-			Merci pour votre commande !
-			
+			<section class="order-confirmation-message" id="order-confirmation-message">
+
+			</section>
 		</main>
 
 		<!-- Footer -->
@@ -41,17 +42,17 @@
 				<a href="#"><i class="fab fa-instagram-square"></i></a>
 				<a href="#"><i class="fab fa-twitter-square"></i></a>
 				<a href="#"><i class="fab fa-linkedin"></i></a>
-			  </section>
-			  <section class="conditions">
+			</section>
+			<section class="conditions">
 				<ul>
-				  <li><a href="#">Blog</a></li>
-				  <li><a href="#">Contactez-nous</a></li>
-				  <li><a href="#">Conditions Générales</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Contactez-nous</a></li>
+					<li><a href="#">Conditions Générales</a></li>
 				</ul>
-			  </section>
-			  <section class="copyright">
+			</section>
+			<section class="copyright">
 				&copy; 2020 OrinoMeuble. Tous droits réservés.
-			  </section>
+			</section>
 		</footer>
 		<!-- Footer END -->
 
@@ -59,6 +60,20 @@
 
 	<!-- JavaScript-->
 	<script src="https://kit.fontawesome.com/36cf067c4e.js" crossorigin="anonymous"></script>
+	<script>
+
+		const orderConfirmationMessage = document.getElementById('order-confirmation-message')
+
+		let url = new URL(window.location.href);
+		let search = new URLSearchParams(url.search);
+		if (search.has("price") && search.has("orderId")){
+			let price = search.get("price")
+			let id = search.get("orderId")
+			
+			orderConfirmationMessage.textContent = 'Votre commande no: ' + id + ' pour un montant de EUR ' + (price/100).toFixed(2)
+		}
+
+	</script>
 	<!-- JavaScript END-->
 </body>
 

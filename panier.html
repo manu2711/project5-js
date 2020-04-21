@@ -53,11 +53,16 @@
       <div class="basket__form">
         <h2>Vos coordonnées</h2>
         <form id="basket__form">
-          <input type="text" id="name" name="prenom" placeholder="Votre prénom" required />
-          <input type="text" id="surname" name="nom" placeholder="Votre nom" required />
-          <textarea name="adresse" id="address" rows="5" placeholder="Votre adresse" required></textarea>
-          <input type="text" id="city" placeholder="Votre ville" required />
-          <input type="email" id="email" placeholder="Votre email" required />
+          <input type="text" id="name" name="prenom" placeholder="Votre prénom *" required />
+          <p id="firstname-error" class="firstname-error">Veuillez indiquer votre prénom</p>
+          <input type="text" id="surname" name="nom" placeholder="Votre nom *" required />
+          <p id="lastname-error" class="lastname-error">Veuillez indiquer votre nom</p>
+          <textarea name="adresse" id="address" rows="5" placeholder="Votre adresse *" required></textarea>
+          <p id="adress-error" class="adress-error">Veuillez indiquer votre adresse</p>
+          <input type="text" id="city" placeholder="Votre ville *" required />
+          <p id="city-error" class="city-error">Veuillez indiquer votre ville</p>
+          <input type="email" id="email" placeholder="Votre email *" required />
+          <p id="email-error" class="email-error">Veuillez indiquer votre email</p>
           <button type="button" id="orderButton">Commander !</button>
         </form>
       </div>
