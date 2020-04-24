@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<header>
-			<h1>OrinoMeuble</h1>
+			<a href="index.html"><h1> Orimeuble</h1></a>
 		</header>
 
 		<!-- Menu de la page -->
@@ -31,9 +31,9 @@
 		<!-- Menu de la page END -->
 		<main>
 			<section class="product" id="product">
-				<article class="item">
+				<article class="item" id="item">
 					<img class="item__image" id="item-image">
-					<main class="item__details">
+					<div class="item__details">
 						<h2 class="item__name" id="item-name"></h2>
 						<h3>Description</h3>
 						<div class="item__description" id="item-description"></div>
@@ -45,12 +45,13 @@
 							<!-- Les options sont rajoutés par product.js-->
 						</select>
 						<a href="#" class="item__button" id="item-button">Acheter</a>
-					</main>
+					</div>
 				</article>
+				<p class="user-message">L'article a bien été ajouté au panier !</p>
 			</section>
 			<section class="no-product" id="no-product">
 				<!-- Message qui affiche "Produit non disponible si l'ID du produit n'est pas valable"-->
-				Désolé, ce produit n'est pas disponible
+				<p class="user-message brown">Désolé, ce produit n'est pas disponible</p> 
 			</section>
 		</main>
 
@@ -70,7 +71,7 @@
 				</ul>
 			</section>
 			<section class="copyright">
-				&copy; 2020 OrinoMeuble. Tous droits réservés.
+				&copy; 2020 Orimeuble. Tous droits réservés.
 			</section>
 		</footer>
 		<!-- Footer END -->

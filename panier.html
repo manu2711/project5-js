@@ -17,7 +17,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>OrinoMeuble</h1>
+      <a href="index.html"><h1> Orimeuble</h1></a>
     </header>
 
     <!-- Menu de la page -->
@@ -31,7 +31,6 @@
     <main class="basket">
       <div class="basket__items" id="basket__items">
         <h2>Votre Panier</h2>
-
         <table class="item-table">
           <thead>
             <tr>
@@ -44,13 +43,13 @@
           </tbody>
           <tfoot>
             <tr>
-              <td>Prix total de votre commande</td>
+              <td>Total</td>
               <td id="total-price"></td>
             </tr>
           </tfoot>
         </table>
       </div>
-      <div class="basket__form">
+      <div class="basket__form" id="basket__form">
         <h2>Vos coordonnées</h2>
         <form id="basket__form">
           <input type="text" id="name" name="prenom" placeholder="Votre prénom *" required />
@@ -66,6 +65,7 @@
           <button type="button" id="orderButton">Commander !</button>
         </form>
       </div>
+      <p class="user-message no-basket" id="no-basket">Votre Panier est vide</p>
     </main>
 
     <!-- Footer -->
@@ -84,7 +84,7 @@
         </ul>
       </section>
       <section class="copyright">
-        &copy; 2020 OrinoMeuble. Tous droits réservés.
+        &copy; 2020 Orimeuble. Tous droits réservés.
       </section>
     </footer>
     <!-- Footer END -->

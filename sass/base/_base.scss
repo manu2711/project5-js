@@ -16,7 +16,6 @@ a {
 
 .container {
     margin: auto;
-    /*max-width: 60rem;*/
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -32,10 +31,9 @@ a {
             justify-content: space-between;
             list-style-type: none;
 
-            li{
+            li {
                 margin: 0 2rem;
             }
-            
         }
     }
 
@@ -44,11 +42,14 @@ a {
         width: 100%;
         max-width: 60rem;
         margin: auto;
-    }
+        box-sizing: border-box;
+        padding: 1rem;
 
-    footer {
-        min-height: 10rem;
-        background-color: lightblue;
-        margin-top: 2rem;
+        .user-message {
+            color: mediumseagreen;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
     }
 }

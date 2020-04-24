@@ -1,105 +1,107 @@
-.container {
-    .basket {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
+.basket {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-        &__items {
-            flex: 1;
-            box-sizing: border-box;
+    &__items {
+        flex: 1;
+        box-sizing: border-box;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+
+        .item-table {
+            width: 100%;
+            max-width: 35rem;
+            border-collapse: collapse;
+            margin-top: 0.5rem 1rem 0 1rem;
+
+            thead {
+                font-weight: bold;
+                text-align: center;
+            }
+
+            tr,
+            td {
+                border: 1px solid grey;
+                padding: 4px;
+            }
+
+            tbody {
+                tr:nth-child(odd) {
+                    background-color: lightblue;
+                }
+            }
+
+            .price {
+                text-align: center;
+            }
+
+            tfoot td {
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+    }
+    &__form {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+
+        .firstname-error,
+        .lastname-error,
+        .adress-error,
+        .city-error,
+        .email-error {
+            display: none;
+            margin: 0;
+            color: red;
+            font-size: 0.8rem;
+        }
+
+        form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-right: 1px solid black;
-            padding-right: 1rem;
-                      
-            .item-table {
-                width: 100%;
-                
-                border-collapse: collapse;
-                margin-top: 8px;
+            justify-content: center;
 
-                thead {
-                    font-weight: bold;
-                    text-align: center;
-                }
-
-                tr,
-                td {
-                    border: 1px solid grey;
-                    padding: 4px;
-                }
-
-                tbody {
-                    tr:nth-child(odd) {
-                        background-color: lightblue;
-                    }
-                }
-
-                tfoot td {
-                    font-weight: bold;
-                    text-align: center;
-                }
-            }
-        }
-        &__form {
-            padding: 0 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            .firstname-error, 
-            .lastname-error, 
-            .adress-error,
-            .city-error,
-            .email-error {
-                display: none;
-                margin: 0;
-                color: red;
-                font-size: 0.8rem;
+            input {
+                width: 16rem;
+                margin: 0.5rem 0;
+                height: 1rem;
+                padding: 4px;
             }
 
-            form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+            textarea {
+                width: 16rem;
+                margin: 0.5rem 0;
+                padding: 4px;
+                resize: none;
+            }
 
-                input {
-                    width: 16rem;
-                    margin: 0.5rem 0;
-                    height: 1rem;
-                    padding: 4px;
-                    
-                }
-
-                textarea {
-                    width: 16rem;
-                    margin: 0.5rem 0;
-                    padding: 4px;
-                    resize: none;
-                }
-
-                button {
-                    margin: 1rem;
-                    padding: 0.5rem 1rem;
-                    background-color: cadetblue;
-                    border: none;
-                    border-radius: 0.3rem;
-                    text-align: center;
-                    font-weight: bold;
-                    color: black;
-                    cursor: pointer;
-                }
+            button {
+                margin: 1rem;
+                padding: 0.5rem 1rem;
+                background-color: cadetblue;
+                border: none;
+                border-radius: 0.3rem;
+                text-align: center;
+                font-weight: bold;
+                color: black;
+                cursor: pointer;
             }
         }
+    }
 
-        h3 {
-            color: mediumseagreen;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
+    h3 {
+        color: mediumseagreen;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+    }
+
+    .no-basket {
+        display: none;
     }
 }

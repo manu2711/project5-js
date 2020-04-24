@@ -1,72 +1,73 @@
-.container {
-    main {
-        h3 {
-            color: mediumseagreen;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
+h3 {
+    color: mediumseagreen;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    p {
+        display: none;
+    }
+
+    .item {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        min-width: 16rem;
+        min-height: 15rem;
+        display: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        img {
+            width: 100%;
+            min-width: 18rem;
+            max-width: 25rem;
         }
-        .product {
+
+        &__details {
+            flex: 1;
+            padding: 0 1rem;
             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: flex-start;
 
-            .item {
-                border: 1px solid rgba(0, 0, 0, 0.5);
-                min-width: 20rem;
-                min-height: 15rem;
-                margin-top: 2rem;
-                box-sizing: border-box;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-
-                img {
-                    width: 50%;
-                    min-width: 18rem;
-                }
-
-                &__details {
-                    flex: 1;
-                    padding: 0 1rem;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-
-                    & > :last-child {
-                        align-self: center;
-                    }
-                }
-
-                &__name {
-                    font-weight: bold;
-                }
-                &__description {
-                    /*margin: 0.5rem 0;*/
-                }
-
-                &__button {
-                    margin: 1rem;
-                    padding: 0.5rem 1rem;
-                    background-color: cadetblue;
-                    border: none;
-                    border-radius: 0.3rem;
-                    text-align: center;
-                    font-weight: bold;
-                    color: black;
-                }
-
-                select {
-                    min-width: 10rem;
-                    padding: 4px;
-                }
+            & > :last-child {
+                align-self: center;
             }
         }
-    }
 
-    .no-product {
-        display: none;
-        color: brown;
+        &__name {
+            font-weight: bold;
+        }
+
+        &__button {
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: cadetblue;
+            border: none;
+            border-radius: 0.3rem;
+            text-align: center;
+            font-weight: bold;
+            color: black;
+        }
+
+        select {
+            min-width: 10rem;
+            padding: 4px;
+        }
     }
+}
+
+.no-product {
+    display: none;
+}
+
+.brown {
+    color: brown !important;
 }
