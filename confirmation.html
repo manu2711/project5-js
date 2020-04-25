@@ -18,7 +18,7 @@
 <body>
 	<div class="container">
 		<header>
-			<h1>OrinoMeuble</h1>
+			<a href="index.html"><h1> Orimeuble</h1></a>
 		</header>
 
 		<!-- Menu de la page -->
@@ -30,9 +30,9 @@
 		</nav>
 		<!-- Menu de la page END -->
 		<main>
-			<section class="order-confirmation-message" id="order-confirmation-message">
-
-			</section>
+			<p class="user-message">Toute l'équipe d'Orimeuble vous remercie pour votre confiance.</p>
+			<p class="user-message">Votre commande no. <span id="orderId"></span> d'un montant de EUR <span id="price"></span> a bien été prise en compte.</p>
+			
 		</main>
 
 		<!-- Footer -->
@@ -51,7 +51,7 @@
 				</ul>
 			</section>
 			<section class="copyright">
-				&copy; 2020 OrinoMeuble. Tous droits réservés.
+				&copy; 2020 Orimeuble. Tous droits réservés.
 			</section>
 		</footer>
 		<!-- Footer END -->
@@ -62,7 +62,9 @@
 	<script src="https://kit.fontawesome.com/36cf067c4e.js" crossorigin="anonymous"></script>
 	<script>
 
-		const orderConfirmationMessage = document.getElementById('order-confirmation-message')
+		
+		const orderIdMessage = document.getElementById('orderId')
+		const priceMessage = document.getElementById('price')
 
 		let url = new URL(window.location.href);
 		let search = new URLSearchParams(url.search);
@@ -70,7 +72,8 @@
 			let price = search.get("price")
 			let id = search.get("orderId")
 			
-			orderConfirmationMessage.textContent = 'Votre commande no: ' + id + ' pour un montant de EUR ' + (price/100).toFixed(2)
+			orderIdMessage.textContent = id
+			priceMessage.textContent = (price/100).toFixed(2)
 		}
 
 	</script>

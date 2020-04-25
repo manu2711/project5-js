@@ -1,56 +1,48 @@
-.container {
-    main {
-        .product-list {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
+.product-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-            .item {
-                border: 1px solid rgba(0, 0, 0, 0.5);
-                width: 45%;
-                min-width: 18rem;
-                min-height: 15rem;
-                margin-top: 2rem;
-                box-sizing: border-box;
-                display: flex;
-                flex-direction: column;
+    .item {
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        width: 100%;
+        min-width: 16rem;
+        max-width: 25rem;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
 
-                & > :last-child {
-                    align-self: center;
-                }
+        & > :last-child {
+            align-self: center;
+        }
 
-                &:hover {
-                    /*border-color: red;*/
-                }
+        img {
+            width: 100%;
+        }
 
-                img {
-                    width: 100%;
-                }
-                &__name {
-                    font-weight: bold;
-                    padding: 0 0.4rem;
-                }
-                &__description {
-                    margin: 0.5rem 0;
-                    padding: 0 0.4rem;
-                }
+        &__name {
+            font-weight: bold;
+            padding: 0 0.4rem;
+        }
+        &__description {
+            margin: 0.5rem 0;
+            padding: 0 0.4rem;
+        }
 
-                &__price {
-                    padding: 0 0.4rem;
-                }
+        &__price {
+            padding: 0 0.4rem;
+        }
 
-                &__lien {
-                    margin: 1rem;
-                    padding: 0.5rem 1rem;
-                    background-color: cadetblue;
-                    border: none;
-                    border-radius: 0.3rem;
-                    text-align: center;
-                    font-weight: bold;
-                    color: black;
-                }
-            }
+        &__lien {
+            margin: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: cadetblue;
+            border: none;
+            border-radius: 0.3rem;
+            text-align: center;
+            font-weight: bold;
+            color: black;
         }
     }
 }

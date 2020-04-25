@@ -1,12 +1,3 @@
-// Récupération des produits ajoutés au panier
-let itemsInBasket = ''
-if (localStorage.getItem('basket') != ''){
-    itemsInBasket = JSON.parse(localStorage.getItem('basket'))
-} else {
-    itemsInBasket = ''
-}
-
-
 // Accès aux éléments du DPM
 const firstName = document.getElementById('name')
 const lastName = document.getElementById('surname')
@@ -15,36 +6,51 @@ const city = document.getElementById('city')
 const email = document.getElementById('email')
 const orderButton = document.getElementById('orderButton')
 const form = document.getElementById('basket__form')
-const totalPriceCell = document.getElementById('total-price')
-
+const basket = document.getElementById('my-basket')
+const basketForm = document.getElementById('basket__form')
+const noBasket = document.getElementById('no-basket')
+const productList = document.getElementById('product-list')
 const firstNameError = document.getElementById('firstname-error')
 const lastNameError = document.getElementById('lastname-error')
 const adressError = document.getElementById('adress-error')
 const cityError = document.getElementById('city-error')
 const emailError = document.getElementById('email-error')
 
+const priceDiv = document.getElementById('price')
+
+let products = []
 let totalPrice = 0
 
-// On liste les produits contenu dans le panier
-for (item of itemsInBasket) {
+// Récupération des produits ajoutés au panier
+if (localStorage.getItem('basket')) {
+    let itemsInBasket = JSON.parse(localStorage.getItem('basket'))
 
-    // Création des constante contenant les éléments HTML
-    const rows = document.getElementById('table-row');
-    const newRow = document.createElement('tr');
-    const newRowName = document.createElement('td');
-    const newRowPrice = document.createElement('td');
+    // On liste les produits contenu dans le panier
+    for (item of itemsInBasket) {
 
-    rows.appendChild(newRow);
-    newRow.append(newRowName, newRowPrice);
+        const newItem = document.createElement('div')
+        const newName = document.createElement('p')
+        const newPrice = document.createElement('p')
 
-    newRowName.innerText = item.name;
-    newRowPrice.innerText = 'EUR ' + (item.price / 100).toFixed(2);
+        productList.appendChild(newItem)
+        newItem.append(newName, newPrice)
+        newItem.classList.add('product-line')
+        newName.textContent = item.name
+        newPrice.textContent = 'EUR ' + (item.price / 100).toFixed(2)
 
-    totalPrice += item.price
+        totalPrice += item.price
+        products.push(item.productId)
+
+        basket.style.display = 'flex'
+        basketForm.style.display = 'flex'
+    }
+
+} else {
+    noBasket.style.display = 'block'
 }
 
 // On calcul puis on affiche le prix total de la commande
-totalPriceCell.textContent = 'EUR ' + (totalPrice / 100).toFixed(2)
+priceDiv.textContent = 'EUR ' + (totalPrice / 100).toFixed(2)
 
 
 // Fonction de validation des emails
@@ -59,8 +65,8 @@ function validateEmail(email) {
 validateInput = (input, error) => {
     const attributeType = input.getAttribute('type')
     const tagName = input.tagName
-    
-    if (attributeType === 'text' || tagName === 'TEXTAREA'){
+
+    if (attributeType === 'text' || tagName === 'TEXTAREA') {
         if (input.value != '') {
             input.style.border = '1px solid green'
             error.style.display = 'none'
@@ -70,7 +76,7 @@ validateInput = (input, error) => {
             error.style.display = 'block'
             return false
         }
-    } else if(attributeType === 'email'){
+    } else if (attributeType === 'email') {
         if (input.value != '') {
             if (validateEmail(input.value)) {
                 input.style.border = '1px solid green'
@@ -86,7 +92,7 @@ validateInput = (input, error) => {
             error.style.display = 'block'
             return false
         }
-    }  
+    }
 }
 
 // On vérifie que les éléments du formulaire sont bien remplis et avec les bons éléments (ex.: email)
@@ -123,8 +129,8 @@ orderButton.addEventListener('click', ($event) => {
             city: city.value,
             email: email.value
         }
-        const products = ["5be9cc611c9d440000c1421e", "5be9cc611c9d440000c1421e"]
-        const post = { contact, products }
+        
+        const post = {contact, products}
 
         submitFormData(post)
     } else {
@@ -155,11 +161,8 @@ async function submitFormData(post) {
         const requestPromise = makePostRequest(post)
         const response = await requestPromise
         localStorage.clear()
-        window.location = "confirmation.html?orderId="+response.orderId+"&price="+totalPrice
+        window.location = "confirmation.html?orderId=" + response.orderId + "&price=" + totalPrice
     } catch (error) {
         console.log(error.error)
     }
 }
-
-
-

@@ -1,10 +1,26 @@
-let request = new XMLHttpRequest()
 
-// On récupère la liste des articles disponibles sur le service web
+allItemRequest = () => {
+  return new Promise((resolve, reject) => {
+    let request = new XMLHttpRequest()
+    request.open('get', 'http://localhost:3000/api/furniture')
+    request.onreadystatechange = () => {
+      if (request.readyState === 4) {
+        if (request.status === 200 || request.status === 201) {
+          resolve(JSON.parse(request.response))
+        } else {
+          reject(JSON.parse(request.response))
+        }
+      }
+    }
+    request.send()
+  })
+}
 
-request.onreadystatechange = function () {
-  if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-    let response = JSON.parse(this.responseText)
+async function loadAllItems() {
+  try {
+    const allItemRequestPromise = allItemRequest()
+    const response = await allItemRequestPromise
+
     for (let item of response) {
       // Creation et ajout  d'une div article pour créer un nouveau produit
       const newItem = document.createElement('article')
@@ -42,7 +58,10 @@ request.onreadystatechange = function () {
       // Ajout des div name, description et price a l'élément article parent
       newItem.append(itemImage, itemName, itemDescription, itemPrice, itemLien)
     }
+
+  } catch (error){
+    console.log(error.error)
   }
 }
-request.open('get', 'http://localhost:3000/api/furniture')
-request.send()
+
+loadAllItems()

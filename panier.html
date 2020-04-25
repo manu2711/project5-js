@@ -17,7 +17,7 @@
 <body>
   <div class="container">
     <header>
-      <h1>OrinoMeuble</h1>
+      <a href="index.html"><h1> Orimeuble</h1></a>
     </header>
 
     <!-- Menu de la page -->
@@ -29,28 +29,16 @@
     </nav>
     <!-- Menu de la page END -->
     <main class="basket">
-      <div class="basket__items" id="basket__items">
+      <div id="my-basket" class="my-basket">
         <h2>Votre Panier</h2>
-
-        <table class="item-table">
-          <thead>
-            <tr>
-              <td>Produit</td>
-              <td>Prix</td>
-            </tr>
-          </thead>
-          <tbody class="table-row" id="table-row">
-            <!-- Insertion de la liste des produits dans le panier grace a basket.js-->
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Prix total de votre commande</td>
-              <td id="total-price"></td>
-            </tr>
-          </tfoot>
-        </table>
+        <div class="product-list" id="product-list"></div>
+        <div class="total-price" >
+          <p>Prix total </p>
+          <p id="price"></p>
+        </div>
       </div>
-      <div class="basket__form">
+      
+      <div class="basket__form" id="basket__form">
         <h2>Vos coordonnées</h2>
         <form id="basket__form">
           <input type="text" id="name" name="prenom" placeholder="Votre prénom *" required />
@@ -66,6 +54,7 @@
           <button type="button" id="orderButton">Commander !</button>
         </form>
       </div>
+      <p class="user-message no-basket" id="no-basket">Votre Panier est vide</p>
     </main>
 
     <!-- Footer -->
@@ -84,7 +73,7 @@
         </ul>
       </section>
       <section class="copyright">
-        &copy; 2020 OrinoMeuble. Tous droits réservés.
+        &copy; 2020 Orimeuble. Tous droits réservés.
       </section>
     </footer>
     <!-- Footer END -->
