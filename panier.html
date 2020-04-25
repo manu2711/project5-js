@@ -29,26 +29,15 @@
     </nav>
     <!-- Menu de la page END -->
     <main class="basket">
-      <div class="basket__items" id="basket__items">
+      <div id="my-basket" class="my-basket">
         <h2>Votre Panier</h2>
-        <table class="item-table">
-          <thead>
-            <tr>
-              <td>Produit</td>
-              <td>Prix</td>
-            </tr>
-          </thead>
-          <tbody class="table-row" id="table-row">
-            <!-- Insertion de la liste des produits dans le panier grace a basket.js-->
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Total</td>
-              <td id="total-price"></td>
-            </tr>
-          </tfoot>
-        </table>
+        <div class="product-list" id="product-list"></div>
+        <div class="total-price" >
+          <p>Prix total </p>
+          <p id="price"></p>
+        </div>
       </div>
+      
       <div class="basket__form" id="basket__form">
         <h2>Vos coordonnées</h2>
         <form id="basket__form">

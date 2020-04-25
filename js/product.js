@@ -77,7 +77,6 @@ async function loadProduct(productId) {
             userMessage.style.display = 'block'
         });
     } catch (error) {
-        console.log(error.message)
         noProduct.style.display = 'block'
     }
 }

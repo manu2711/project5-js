@@ -6,16 +6,17 @@ const city = document.getElementById('city')
 const email = document.getElementById('email')
 const orderButton = document.getElementById('orderButton')
 const form = document.getElementById('basket__form')
-const totalPriceCell = document.getElementById('total-price')
-const basket = document.getElementById('basket__items')
+const basket = document.getElementById('my-basket')
 const basketForm = document.getElementById('basket__form')
 const noBasket = document.getElementById('no-basket')
-
+const productList = document.getElementById('product-list')
 const firstNameError = document.getElementById('firstname-error')
 const lastNameError = document.getElementById('lastname-error')
 const adressError = document.getElementById('adress-error')
 const cityError = document.getElementById('city-error')
 const emailError = document.getElementById('email-error')
+
+const priceDiv = document.getElementById('price')
 
 let products = []
 let totalPrice = 0
@@ -27,18 +28,15 @@ if (localStorage.getItem('basket')) {
     // On liste les produits contenu dans le panier
     for (item of itemsInBasket) {
 
-        // Création des constante contenant les éléments HTML
-        const rows = document.getElementById('table-row');
-        const newRow = document.createElement('tr');
-        const newRowName = document.createElement('td');
-        const newRowPrice = document.createElement('td');
-        newRowPrice.classList.add('price')
+        const newItem = document.createElement('div')
+        const newName = document.createElement('p')
+        const newPrice = document.createElement('p')
 
-        rows.appendChild(newRow);
-        newRow.append(newRowName, newRowPrice);
-
-        newRowName.innerText = item.name;
-        newRowPrice.innerText = '€ ' + (item.price / 100).toFixed(2);
+        productList.appendChild(newItem)
+        newItem.append(newName, newPrice)
+        newItem.classList.add('product-line')
+        newName.textContent = item.name
+        newPrice.textContent = 'EUR ' + (item.price / 100).toFixed(2)
 
         totalPrice += item.price
         products.push(item.productId)
@@ -51,10 +49,8 @@ if (localStorage.getItem('basket')) {
     noBasket.style.display = 'block'
 }
 
-
-
 // On calcul puis on affiche le prix total de la commande
-totalPriceCell.textContent = '€ ' + (totalPrice / 100).toFixed(2)
+priceDiv.textContent = 'EUR ' + (totalPrice / 100).toFixed(2)
 
 
 // Fonction de validation des emails
@@ -170,6 +166,3 @@ async function submitFormData(post) {
         console.log(error.error)
     }
 }
-
-
-
