@@ -131,11 +131,8 @@ orderButton.addEventListener('click', ($event) => {
         }
         
         const post = {contact, products}
-
         submitFormData(post)
-    } else {
-        console.log('tous les champs sont obligatoires || il y a une erreur')
-    }
+    } 
 })
 
 function makePostRequest(data) {
