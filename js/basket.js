@@ -131,28 +131,12 @@ orderButton.addEventListener('click', $event => {
       email: email.value
     }
 
-<<<<<<< HEAD
-    //On vérifie que tous les éléments du formulaire sont bien remplis
-    if (validateInput(firstName, firstNameError) && validateInput(lastName, lastNameError) && validateInput(adress, adressError) && validateInput(city, cityError) && validateInput(email, emailError)) {
-        const contact = {
-            firstName: firstName.value,
-            lastName: lastName.value,
-            adress: adress.value,
-            city: city.value,
-            email: email.value
-        }
-        
-        const post = {contact, products}
-        submitFormData(post)
-    } 
-=======
     const post = { contact, products }
 
     submitFormData(post)
   } else {
     console.log('tous les champs sont obligatoires || il y a une erreur')
   }
->>>>>>> develop
 })
 
 function makePostRequest (data) {
