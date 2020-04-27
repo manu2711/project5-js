@@ -1,4 +1,4 @@
-
+// Créaion d'une fonction contenant la requête permettant de récupérer tous les articles
 allItemRequest = () => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest()
@@ -16,6 +16,7 @@ allItemRequest = () => {
   })
 }
 
+// Création de la fonction asynchrone permettant l'affichage de tous les produits articles sur la page
 async function loadAllItems() {
   try {
     const allItemRequestPromise = allItemRequest()
@@ -59,9 +60,11 @@ async function loadAllItems() {
       newItem.append(itemImage, itemName, itemDescription, itemPrice, itemLien)
     }
 
-  } catch (error){
+  } catch (error) {
+    // Evolution possible du message d'erreur
     console.log(error.error)
   }
 }
 
+// Appelle à la fonction loadAllItems()
 loadAllItems()

@@ -1,4 +1,4 @@
-// Accès aux éléments du DPM
+// Accès aux différents élémets du DOM
 const firstName = document.getElementById('name')
 const lastName = document.getElementById('surname')
 const adress = document.getElementById('address')
@@ -15,10 +15,11 @@ const lastNameError = document.getElementById('lastname-error')
 const adressError = document.getElementById('adress-error')
 const cityError = document.getElementById('city-error')
 const emailError = document.getElementById('email-error')
-
 const priceDiv = document.getElementById('price')
 
+// Création du tableau products qui contiendra les IDs des différents produits du panier
 let products = []
+// Création de la variable totalPrice qui additionnera les prix des différents articles et retourne la valeur total
 let totalPrice = 0
 
 // Récupération des produits ajoutés au panier
@@ -38,6 +39,8 @@ if (localStorage.getItem('basket')) {
     newPrice.textContent = 'EUR ' + (item.price / 100).toFixed(2)
 
     totalPrice += item.price
+
+    // ID du produit a ajouter au tableau de produits
     products.push(item.productId)
 
     basket.style.display = 'flex'
@@ -47,11 +50,11 @@ if (localStorage.getItem('basket')) {
   noBasket.style.display = 'block'
 }
 
-// On calcul puis on affiche le prix total de la commande
+// On calcule puis on affiche le prix total de la commande
 priceDiv.textContent = 'EUR ' + (totalPrice / 100).toFixed(2)
 
 // Fonction de validation des emails
-function validateEmail (email) {
+function validateEmail(email) {
   let re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/
   return re.test(email)
 }
@@ -112,6 +115,7 @@ email.addEventListener('blur', () => {
   validateInput(email, emailError)
 })
 
+// Ajout d'un évènement clic sur le bonton Acheter, pour passer la commande
 orderButton.addEventListener('click', $event => {
   $event.preventDefault()
 
@@ -123,6 +127,7 @@ orderButton.addEventListener('click', $event => {
     validateInput(city, cityError) &&
     validateInput(email, emailError)
   ) {
+    // Création d'un object contact regroupant tous les éléments du formulaire
     const contact = {
       firstName: firstName.value,
       lastName: lastName.value,
@@ -131,15 +136,16 @@ orderButton.addEventListener('click', $event => {
       email: email.value
     }
 
+    // Création d'un object post contenant les détails de contact ainsi que les Id
     const post = { contact, products }
 
+    // Appel de la fonction submitFormData pour envoi de la commande
     submitFormData(post)
-  } else {
-    console.log('tous les champs sont obligatoires || il y a une erreur')
-  }
+  } 
 })
 
-function makePostRequest (data) {
+// Création d'une fonction contenant la requête post (pour passer la commande)
+function makePostRequest(data) {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest()
     request.open('POST', 'http://localhost:3000/api/furniture/order')
@@ -157,7 +163,8 @@ function makePostRequest (data) {
   })
 }
 
-async function submitFormData (post) {
+// Création d'une fonction asynchrone qui va permettre d'envoyer les informations de commande à l'API puis vider le panier
+async function submitFormData(post) {
   try {
     const requestPromise = makePostRequest(post)
     const response = await requestPromise
