@@ -5,7 +5,7 @@ const adress = document.getElementById('address')
 const city = document.getElementById('city')
 const email = document.getElementById('email')
 const orderButton = document.getElementById('orderButton')
-const form = document.getElementById('basket__form')
+
 const basket = document.getElementById('my-basket')
 const basketForm = document.getElementById('basket__form')
 const noBasket = document.getElementById('no-basket')

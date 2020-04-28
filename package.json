@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "sass": "sass --watch ./sass/main.scss:./assets/css/style.css --style compressed",
+    "prefix": "postcss ./assets/css/style.css --use autoprefixer -d ./assets/css/prefixed/",
     "format": "prettier-standard --changed"
   },
   "author": "",
