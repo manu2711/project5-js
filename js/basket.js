@@ -54,9 +54,21 @@ if (localStorage.getItem('basket')) {
 priceDiv.textContent = 'EUR ' + (totalPrice / 100).toFixed(2)
 
 // Fonction de validation des emails
-function validateEmail(email) {
+function validateEmail (email) {
   let re = /^(?:[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/
   return re.test(email)
+}
+
+// Fonction des validation des éléments input du formulaire
+function validateInputText (inputToCheck) {
+  let string = /^[a-zA-Z]+$/
+  return string.test(inputToCheck)
+}
+
+// Fonction des validation des éléments textarea du formulaire
+function validateTextArea (textToCheck) {
+  let string = /^[a-zA-Z0-9 ]+$/
+  return string.test(textToCheck)
 }
 
 // Fonction de validation des éléments du formulaire
@@ -65,8 +77,18 @@ validateInput = (input, error) => {
   const attributeType = input.getAttribute('type')
   const tagName = input.tagName
 
-  if (attributeType === 'text' || tagName === 'TEXTAREA') {
-    if (input.value != '') {
+  if (attributeType === 'text') {
+    if (input.value != '' && validateInputText(input.value)) {
+      input.style.border = '1px solid green'
+      error.style.display = 'none'
+      return true
+    } else {
+      input.style.border = '1px solid red'
+      error.style.display = 'block'
+      return false
+    }
+  } else if (tagName === 'TEXTAREA') {
+    if (input.value != '' && validateTextArea(input.value)) {
       input.style.border = '1px solid green'
       error.style.display = 'none'
       return true
@@ -115,6 +137,20 @@ email.addEventListener('blur', () => {
   validateInput(email, emailError)
 })
 
+// Création de la fonction escapeHTML pour empêcher les injections sql
+function escapeHtml (text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  }
+  return text.replace(/[&<>"']/g, function (m) {
+    return map[m]
+  })
+}
+
 // Ajout d'un évènement clic sur le bonton Acheter, pour passer la commande
 orderButton.addEventListener('click', $event => {
   $event.preventDefault()
@@ -129,11 +165,11 @@ orderButton.addEventListener('click', $event => {
   ) {
     // Création d'un object contact regroupant tous les éléments du formulaire
     const contact = {
-      firstName: firstName.value,
-      lastName: lastName.value,
-      adress: adress.value,
-      city: city.value,
-      email: email.value
+      firstName: escapeHtml(firstName.value),
+      lastName: escapeHtml(lastName.value),
+      adress: escapeHtml(adress.value),
+      city: escapeHtml(city.value),
+      email: escapeHtml(email.value)
     }
 
     // Création d'un object post contenant les détails de contact ainsi que les Id
@@ -141,11 +177,11 @@ orderButton.addEventListener('click', $event => {
 
     // Appel de la fonction submitFormData pour envoi de la commande
     submitFormData(post)
-  } 
+  }
 })
 
 // Création d'une fonction contenant la requête post (pour passer la commande)
-function makePostRequest(data) {
+function makePostRequest (data) {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest()
     request.open('POST', 'http://localhost:3000/api/furniture/order')
@@ -164,7 +200,7 @@ function makePostRequest(data) {
 }
 
 // Création d'une fonction asynchrone qui va permettre d'envoyer les informations de commande à l'API puis vider le panier
-async function submitFormData(post) {
+async function submitFormData (post) {
   try {
     const requestPromise = makePostRequest(post)
     const response = await requestPromise
